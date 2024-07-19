@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("/Users/jesusbautista/repos/BuyWord/client/src/assets/homepaper.jpeg");
+  font-family: 'MedievalSharp', Arial, sans-serif;
+  color: #333;
+}
+
+/* Home Page styling */
+.homeContainer {
+    text-align: center; 
+    padding: 70px 20px; 
+    background: rgba(255, 255, 255, 0.8); 
+    max-width: 800px; 
+    margin: 50px auto; 
+    border-radius: 10px; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .homeContainer h1 {
+    color: #023020;
+    font-size: 3rem; 
+    margin-bottom: 20px; 
+  }
+  
+  .homeContainer h3 {
+    font-size: 1.5rem; 
+    margin-bottom: 40px; 
+  }
+  
+  .homeContainer button {
+    background-color: #964B00; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    font-size: 1.2rem; 
+    cursor: pointer; 
+    margin: 0 10px; 
+    border-radius: 5px; 
+    transition: background-color 0.3s; 
+  }
+
+  .homeContainer button.start {
+    background-color: #023020;
+  }
+  
+  .homeContainer button:hover {
+    background-color: #f0c040; 
+  }
+/* Navbar styling */
+.navbar {
+  background-color: rgba(111, 78, 55, 0.9);
+  color: white;
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin-bottom: 20px;
+}
+
+.navbar img {
+  height: 80px; /* Set the height of the logo */
+  margin-right: 20px; /* Space between logo and link */
+}
+
+.navbar ul {
+  font-family: "MedievalSharp", cursive; /* Medieval font */
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  font-size: 26px;
+  gap: 40px;
+  list-style-type: none; 
+}
+
+.navbar ul button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navbar li:hover, a:hover {
+  color: #f0c040; /* Hover color */
+}
+
+/* Waiting Room */
+.waitingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
