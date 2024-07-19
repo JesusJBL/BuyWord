@@ -4,7 +4,7 @@ import { getFirestore } from 'firebase/firestore';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBVTCTleGciPx17_Kr15UupUTkT62naDKs",
+  apiKey: `${import.meta.env.GOOGLE_API_KEY}`,
   authDomain: "buyword-a8012.firebaseapp.com",
   projectId: "buyword-a8012",
   storageBucket: "buyword-a8012.appspot.com",
