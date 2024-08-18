@@ -11,6 +11,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    zIndex: 1000,
   },
   modal: {
     display: "flex",
@@ -34,8 +35,6 @@ const styles = {
     color: "white",
   },
 };
-
-
 
 function Modal({ buttonText, buttonColor, children, onClose, handleSubmit }) {
   return (
@@ -71,6 +70,5 @@ Modal.propTypes = {
   onClose: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
 };
-
 
 export default Modal;

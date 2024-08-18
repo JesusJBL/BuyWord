@@ -5,6 +5,7 @@ import StartRoomModal from "./modals/StartRoomModal.jsx";
 import NavBar from "./routes/NavBar.jsx";
 import { useNavigate } from "react-router-dom";
 import { db, auth } from "../config/firebase.js";
+import PropTypes from "prop-types";
 import {
   query,
   getDocs,
@@ -13,20 +14,19 @@ import {
   where,
   updateDoc,
   doc,
+  arrayUnion,
 } from "firebase/firestore";
 
-function Home() {
+function Home({ isAuth, setIsAuth }) {
   const navigate = useNavigate();
 
   const [isJoinModalOpen, setJoinModalOpen] = useState(false);
   const [isStartModalOpen, setStartModalOpen] = useState(false);
 
-  const [authentication, setAuthentication] = useState(false);
   const [roomID, setRoomID] = useState("");
   const [attemptID, setAttemptID] = useState("");
   const [playerCount, setPlayerCount] = useState(2);
   const [errorMessage, setErrorMessage] = useState("");
-
   const roomsRef = collection(db, "rooms");
 
   const generateRoomID = () => {
@@ -68,16 +68,19 @@ function Home() {
   const makeRoom = async () => {
     const newRoomID = await checkRoom();
 
+    const player = [
+      {
+        playerID: auth.currentUser.uid,
+        playerName: auth.currentUser.displayName,
+        playerEmail: auth.currentUser.email,
+      },
+    ];
+
     try {
       await addDoc(roomsRef, {
         roomID: newRoomID,
         roomActive: true,
-        players: [
-          {
-            playerID: auth.currentUser.uid,
-            playerName: auth.currentUser.displayName,
-          },
-        ],
+        players: player,
         roomCapacity: playerCount,
       });
     } catch (err) {
@@ -94,7 +97,6 @@ function Home() {
         where("roomID", "==", attemptID)
       );
       const data = await getDocs(q);
-      console.log(data);
       const room = data.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
@@ -107,9 +109,10 @@ function Home() {
           const newPlayer = {
             playerID: auth.currentUser.uid,
             playerName: auth.currentUser.displayName,
+            playerEmail: auth.currentUser.email,
           };
           await updateDoc(roomRef, {
-            players: [...room[0].players, newPlayer],
+            players: arrayUnion(newPlayer),
           });
           return navigate(`lobby/${attemptID}`);
         } else {
@@ -125,12 +128,12 @@ function Home() {
 
   return (
     <div>
-      <NavBar isAuth={authentication} setAuth={setAuthentication} />
+      <NavBar isAuth={isAuth} setAuth={setIsAuth} />
       <div className="homeContainer">
         <h1>BuyWord</h1>
         {isJoinModalOpen && (
           <JoinRoomModal
-            isAuth={authentication}
+            isAuth={isAuth}
             onClose={() => setJoinModalOpen(false)}
             roomId={attemptID}
             roomChange={setAttemptID}
@@ -140,7 +143,7 @@ function Home() {
         )}
         {isStartModalOpen && (
           <StartRoomModal
-            isAuth={authentication}
+            isAuth={isAuth}
             onClose={() => setStartModalOpen(false)}
             handleSubmit={makeRoom}
             playerInput={playerCount}
@@ -155,16 +158,13 @@ function Home() {
         </h3>
         <div>
           <button
-            disabled={!authentication}
+            disabled={!isAuth}
             onClick={() => setStartModalOpen(true)}
             className="start"
           >
             Start A Game
           </button>
-          <button
-            disabled={!authentication}
-            onClick={() => setJoinModalOpen(true)}
-          >
+          <button disabled={!isAuth} onClick={() => setJoinModalOpen(true)}>
             Join A Game
           </button>
         </div>
@@ -172,5 +172,10 @@ function Home() {
     </div>
   );
 }
+
+Home.propTypes = {
+  isAuth: PropTypes.bool.isRequired,
+  setIsAuth: PropTypes.func.isRequired,
+};
 
 export default Home;

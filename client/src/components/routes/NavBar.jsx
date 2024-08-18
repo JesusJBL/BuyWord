@@ -8,7 +8,6 @@ function NavBar({ isAuth, setAuth }) {
   const signIn = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        localStorage.setItem("isAuth", true); // if user logs out, it'll keep them logged in
         setAuth(true);
       })
       .catch((error) => {
@@ -18,7 +17,6 @@ function NavBar({ isAuth, setAuth }) {
 
   const signOutUser = () => {
     signOut(auth).then(() => {
-      localStorage.clear();
       setAuth(false);
     });
   };

@@ -31,7 +31,7 @@ function StartRoomModal({
           type="number"
           value={playerInput}
           onChange={(e) => playerOnChange(Number(e.target.value))}
-          max="4"
+          max="2"
           min="2"
           style={{
             padding: "10px",
