@@ -82,6 +82,7 @@ function Home({ isAuth, setIsAuth }) {
         roomActive: true,
         players: player,
         roomCapacity: playerCount,
+        userId: auth?.currentUser?.uid,
       });
     } catch (err) {
       console.log(err);
