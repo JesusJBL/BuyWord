@@ -9,6 +9,9 @@ import { auth } from "./config/firebase.js";
 import io from "socket.io-client";
 
 const socket = io.connect("https://buyword.onrender.com");
+socket.on("connect", () => {
+  console.log("Connected to WebSocket server!");
+});
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
