@@ -6,7 +6,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://buyword-a8012.web.app/",
+    origin: "http://localhost:5173",
   },
   connectionStateRecovery: {},
 });

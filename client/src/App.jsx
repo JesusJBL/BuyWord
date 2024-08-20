@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { auth } from "./config/firebase.js";
 import io from "socket.io-client";
 
-const socket = io.connect("https://buyword.onrender.com");
+const socket = io.connect("http://localhost:3000");
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
