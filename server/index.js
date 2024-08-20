@@ -16,6 +16,10 @@ const port = process.env.PORT || 5000;
 const rooms = {};
 const isConnected = false;
 
+app.get("/", (req, res) => {
+  res.send("WebSocket server is running!");
+});
+
 function areObjectsEqual(obj1, obj2) {
   if (
     typeof obj1 !== "object" ||
