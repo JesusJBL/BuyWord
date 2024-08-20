@@ -131,7 +131,7 @@ function Home({ isAuth, setIsAuth }) {
     <div>
       <NavBar isAuth={isAuth} setAuth={setIsAuth} />
       <div className="homeContainer">
-        <h1>BuyWord</h1>
+        <h1>BuyWord!</h1>
         {isJoinModalOpen && (
           <JoinRoomModal
             isAuth={isAuth}
