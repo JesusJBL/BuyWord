@@ -9,9 +9,17 @@ function NavBar({ isAuth, setAuth }) {
     signInWithPopup(auth, provider)
       .then((result) => {
         setAuth(true);
+        console.log({ auth });
+        const credential = provider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        console.log({ result, auth, token, user });
       })
       .catch((error) => {
-        console.error(error.code, error.message);
+        console.error(error.code);
+        console.error(error.message);
+        console.error(error.customData.email);
       });
   };
 
