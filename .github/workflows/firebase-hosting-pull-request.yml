@@ -19,4 +19,4 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_BUYWORD_54579 }}
           projectId: buyword-54579
-          entryPoint: ./client/firebase.json
+          entryPoint: ./client
