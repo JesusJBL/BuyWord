@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "buyword-a8012"
-  }
+    "default": "buyword-54579",
+    "buy": "buyword-54579"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
