@@ -8,12 +8,12 @@ as well as the API KEY
 */
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
-  authDomain: "buyword-54579.firebaseapp.com",
-  projectId: "buyword-54579",
-  storageBucket: "buyword-54579.appspot.com",
-  messagingSenderId: "93675993422",
-  appId: "1:93675993422:web:3ccfa8cb65c89cc7b5461f",
-  measurementId: "G-L4LWVBBJZS",
+  authDomain: "buywordtwo.firebaseapp.com",
+  projectId: "buywordtwo",
+  storageBucket: "buywordtwo.appspot.com",
+  messagingSenderId: "479333057129",
+  appId: "1:479333057129:web:eeee986f90e5ff53d018f8",
+  measurementId: "G-49ZTSR0JFF",
 };
 
 // Initialize Firebase

@@ -1,7 +1,8 @@
 {
   "projects": {
-    "default": "buyword-54579",
-    "buy": "buyword-54579"
+    "default": "buywordtwo",
+    "buy": "buyword-54579",
+    "buyword2": "buywordtwo"
   },
   "targets": {},
   "etags": {},
